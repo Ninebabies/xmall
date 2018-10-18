@@ -1,0 +1,31 @@
+# 配置Tomcat端口号
+server:
+  port: 9997
+# 配置Spring Boot项目名
+spring:
+  application:
+    name: xmall-admin
+# 配置Dubbo信息
+  dubbo:
+    application:
+      name: xmall-admin
+    protocol:
+      name: dubbo
+      port: 20880
+      serialization: java
+    registry:
+      address: zookeeper://localhost:2181
+    scan: com.augustars.xmall
+# 配置视图解析器的前后缀
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+    favicon:
+      enabled: false
+# 配置数据库连接新信息
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/winner?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&&serverTimezone=UTC
+    username: winner
+    password: Winner@123456
