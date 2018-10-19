@@ -29,16 +29,18 @@ public class SecurityUtil extends AuthorizingRealm {
 		System.out.println(userToken);
 		//	获得登录用户名
 		String loginName = userToken.getUsername();
-		String password = EncryptionUtil.encrypt(new String(userToken.getPassword()));
+		String password = new String(userToken.getPassword());
 //		password = Encr yptionUtil.encrypt(password);
 		userToken.setPassword(password.toCharArray());
-//		
+		
 		if (loginName != null && !"".equals(loginName.trim()) && password != null && !"".equals(password.trim())) {
 			userToken.setPassword(EncryptionUtil.encrypt(password).toCharArray());
+			System.out.println(".......");
+			
 		// 使用登录名查找用户信息
 				// 判断是否启用
 				try {
-					User user = userTransport.getUserByLogin(loginName);
+					User user = userTransport.getUserByLoginName(loginName);
 					System.out.println(user);
 					if (user != null && ConstantUtil.STATUS_YES.equals(user.getStatus().getStatusCode())) {
 						SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getLoginName(), user.getPassword(), getName());

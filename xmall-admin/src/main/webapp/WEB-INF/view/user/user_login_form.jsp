@@ -18,23 +18,6 @@
 		<li class="slide-1 prevslide" style="visibility: visible; opacity: 1;"><a target="_blank"><img src="<%=request.getContextPath() %>/static/img/backgrounds/2.jpg" style="width: 1583px; left: 0px; top: -313.5px; height: 1108.1px;"></a></li>
 		<li class="slide-2 activeslide" style="visibility: visible; opacity: 1;"><a target="_blank"><img src="<%=request.getContextPath() %>/static/img/backgrounds/3.jpg" style="width: 1583px; height: 1060.61px; left: 0px; top: -290px;"></a></li>
 		</ul>-->
-		<script type="text/javascript">
-			$(function() {
-				$("button").click(function() {
-					// 进行异步提交
-					var loginForm = $("#loginForm").serialize();
-					$.ajax({
-						url: "<%=request.getContextPath()%>/user/login",
-						type: "post",
-						data: loginForm,
-						dataType: "json",
-						success: function(data) {
-							alert("F**king");
-						}
-					});
-				});
-			});
-		</script>
 		   <link rel='stylesheet' href='<%=request.getContextPath() %>/http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
         <link rel="stylesheet" href="<%=request.getContextPath() %>/static/css/reset.css">
         <link rel="stylesheet" href="<%=request.getContextPath() %>/static/css/supersized.css">

@@ -37,7 +37,7 @@ public class Role implements Serializable {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-	@ManyToMany(targetEntity=Menu.class, fetch=FetchType.LAZY,
+	@ManyToMany(targetEntity=Menu.class, fetch=FetchType.EAGER,
 			cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name="sys_role_menu",
 			joinColumns= {@JoinColumn(name="role_id")},

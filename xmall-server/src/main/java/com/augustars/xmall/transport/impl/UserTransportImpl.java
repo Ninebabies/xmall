@@ -16,9 +16,8 @@ public class UserTransportImpl implements UserTransport {
 	private UserSerivce userService;
 
 	public User getUserByLoginName(String loginName) throws Exception {
-		User user = userService.getUserByLoginName(loginName);
 		System.out.println("userService");
-		return user;
+		return userService.getUserByLoginName(loginName);
 	}
 
 	public MallPage<User> getUserListByPage(Integer pageNum, Integer pageSize, String username) throws Exception {
@@ -29,7 +28,11 @@ public class UserTransportImpl implements UserTransport {
 		return userService.changeStatus(userId, statusCode);
 	}
 
-	public User getUserByLogin(String loginName) throws Exception {
-		return null;
+	public boolean saveUser(User user) throws Exception {
+		return userService.saveUser(user);
 	}
+
+	
+
+	
 }
