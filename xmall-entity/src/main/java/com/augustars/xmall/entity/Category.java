@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -49,12 +50,14 @@ public class Category implements Serializable{
 	public void setParent(Category parent) {
 		this.parent = parent;
 	}
+	@Column(name="category_name")
 	public String getCategoryName() {
 		return categoryName;
 	}
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
+	@Column(name="category_code")
 	public String getCategoryCode() {
 		return categoryCode;
 	}
@@ -71,6 +74,7 @@ public class Category implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	@Column(name="sort_order")
 	public Integer getSortOrder() {
 		return sortOrder;
 	}

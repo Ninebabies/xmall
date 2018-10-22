@@ -21,22 +21,25 @@
 		<script src="<%=request.getContextPath() %>/static/js/fastclick.js"></script>
 		<script src="<%=request.getContextPath() %>/static/js/adminlte.min.js"></script>
 			<script type="text/javascript">
-			$(function() {
-				$("button").click(function() {
-					// 进行异步提交
-					var loginForm = $("#loginForm").serialize();
-					$.ajax({
-						url: "<%=request.getContextPath()%>/user/login",
-						type: "post",
-						data: loginForm,
-						dataType: "json",
-						success: function(data) {
-							alert("F**king");
-						}
-					});
-				});
-			});
-		</script>
+		$(function() {
+		    $('#roletable').DataTable({
+		      	'paging'      : true,
+		      	'lengthChange': false,
+		      	'searching'   : false,
+		      	'ordering'    : true,
+		      	'info'        : true,
+		      	'autoWidth'   : false
+		    });
+		});
+		function getAuthcModal(roleId) {
+			var width = "600px";
+			var height = "700px";
+			var url = "<%=request.getContextPath()%>/role/authcList?roleId=" + roleId;
+			var title = "角色授权";	
+			//对于JavaScript来说parent代表父类元素
+			parent.openModal(title, url, width, height);
+		}
+	</script>
 		</head>
 		<body calss="hold-transion skin-biue sideddar-mini">
 				<section>

@@ -9,15 +9,16 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.augustars.xmall.util.SecurityUtil;
+import com.augustars.xmall.util.ShiroDBRealm;
+
 
 @Configuration
 public class ShiroConfiguration {
 	//设置自定定义的认证域位置
 	@Bean
-	public SecurityUtil shiroDBRealm() {
+	public ShiroDBRealm shiroDBRealm() {
 		System.out.println("设置自定定义的认证域位置");
-		return new SecurityUtil();
+		return new ShiroDBRealm();
 	}
 	//获得securityManagerBean对象
 	//设置shiro的核心认证对象
@@ -42,7 +43,7 @@ public class ShiroConfiguration {
 		shiroFilter.setLoginUrl("/user/userLogin");
 		// 配置当认证成功后，默认的重定向的跳转地址
 		// 若在认证之前，就已经存在要跳转的地址，则shiro框架会自动向该地址进行重定向
-		shiroFilter.setSuccessUrl("/");
+		shiroFilter.setSuccessUrl("/index");
 		//拦截器
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 			//静态资源无需认证anon

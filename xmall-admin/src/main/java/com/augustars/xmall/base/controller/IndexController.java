@@ -1,6 +1,8 @@
 package com.augustars.xmall.base.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,20 +33,21 @@ public class IndexController extends BaseController{
 		//原因：session的生命周期是在一次请求来临和结束，若通过role直接获取menuList，
 		//	   是多次的进行获取menu，所以当再次获取menu信息时，session已关闭，将会无法再获取到
 		//解决办法：通过事务的方式查询表之间关联的信息，获得用户对应的所有的菜单信息	
-//		List<Menu> menuList=menuTransport.getMenuListByRole(role);
-//		for (Menu menu : menuList) {
-//			List<Menu> chlidemenuList = menu.getChildMenuList();
-//			System.out.println(menu.getText());
-//			for (Menu menu2 : chlidemenuList) {
-//				System.out.println(menu2.getText());
-//			}
-//		}
-		//转发到管理员管理界面
-//		Map<String, Object> resultMap= new HashMap<String,Object>(); 
+		List<Menu> menuList=menuTransport.getMenuListByRole(role);
+		for (Menu menu : menuList) {
+			List<Menu> chlidemenuList = menu.getChildMenuList();
+			System.out.println(menu.getText());
+			for (Menu menu2 : chlidemenuList) {
+				System.out.println(menu2.getText());
+			}
+		}
+//		转发到管理员管理界面
+		Map<String, Object> resultMap= new HashMap<String,Object>(); 
 //		resultMap.put("menuList", menuList);
-		List<Menu> menuList = menuTransport.getMenuListByRole(role);
+//		List<Menu> menuList1 = menuTransport.getMenuListByRole(role);
 		System.out.println("resultMap");
-		return new ModelAndView("index","menuList", menuList);
+//		return new ModelAndView("index","menuList", menuList);
+		return new ModelAndView("index",resultMap);
 	}
 	
 }

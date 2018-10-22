@@ -4,7 +4,7 @@
 	<head>
 			<title></title>
 			<meta charset="UTF-8">
-			<link rel="stylesheet" href="<%=request.getContextPath() %>/static/css/bootstrap.min.css" type="text/css">
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/static/css/bootstrap.min.css" type="text/css">
 		<link rel="stylesheet" href="<%=request.getContextPath() %>/static/ztree/zTreeStyle.css" type="text/css">
 		<script type="text/javascript" src="<%=request.getContextPath() %>/static/js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath() %>/static/ztree/jquery.ztree.core.min.js"></script>
@@ -59,14 +59,17 @@
 			function autchRole() {
 				// 获取所有的用户所选角色主键
 				var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+				//拿到所有选中的节点
 				var nodes = zTree.getCheckedNodes(true);
+				//给定一个空字符串
 				var nodeIds = "";
 				for (var i = 0; i < nodes.length; i++) {
 					nodeIds = nodeIds + nodes[i].id + "-";
 				}
+				var roleId= $("#roldId").val();
 				nodeIds = nodeIds.substring(0, nodeIds.length-1);
 				$.ajax({
-					url: "<%=request.getContextPath()%>/role/authc",
+					url: "<%=request.getContextPath()%>/role/authc?roleId=" + roleId,
 					method: "post",
 					data: {
 						"nodeIds": nodeIds
@@ -89,8 +92,10 @@
 	</head>
 <body>
 		<input type="hidden" id="roleId" value="${roleId }"/>
-		<ul id="treeDemo" class="ztree" style="height: 100%"></ul>
-		<br>
-		<a class="btn btn-success btn-xs" onclick="autchRole();">授权</a>
+		<div>
+			<ul id="treeDemo" class="ztree" style="height: 100%"></ul>
+			<button class="btn btn-success btn-xs" onclick="autchRole();">授权</button>
+		</div>
+		
 </body>
 </html>

@@ -3,322 +3,120 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title></title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		 <link href="http://fonts.googleapis.com/css?family=Oxygen|Marck+Script" rel="stylesheet" type="text/css">
-   	 	<link href="<%=request.getContextPath() %>/static/css/bootstrap.css" rel="stylesheet">
-    	<link href="<%=request.getContextPath() %>/static/css/font-awesome.css" rel="stylesheet">
-    	<link href="<%=request.getContextPath() %>/static/css/admin.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<meta name="description" content="">
+    	<meta name="author" content="">
+    
+    	<!-- Le styles -->
+    	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oxygen|Marck+Script" rel="stylesheet" type="text/css">
+    	<link rel="stylesheet" href="<%=request.getContextPath() %>/static/css/bootstrap.css" rel="stylesheet">
+    	<link rel="stylesheet" href="<%=request.getContextPath() %>/static/css/font-awesome.css" rel="stylesheet">
+    	<link rel="stylesheet" href="<%=request.getContextPath() %>/static/css/admin.css" rel="stylesheet">
     	
-    	<script src="<%=request.getContextPath() %>/static/js/jquery.min.js"></script>
+    	<script src="<%=request.getContextPath() %>/static/js/jquery.min.js"></script>   	
 		<script src="<%=request.getContextPath() %>/static/js/bootstrap.js"></script>
 		<script src="<%=request.getContextPath() %>/static/js/excanvas.min.js"></script>
-		<script src="<%=request.getContextPath() %>/static/js/jquery.flot.min.js"></script>		
-		<script src="<%=request.getContextPath() %>/static/js/jquery.flot.resize.js"></script>		
-		<!--  <script type="text/javascript">-->
+		<script src="<%=request.getContextPath() %>/static/js/jquery.flot.min.js"></script>
+		<script src="<%=request.getContextPath() %>/static/js/jquery.flot.resize.js"></script>
+		<script type="text/javascript">
+			
+			function openFrame(url) {
+				// 组装请求路径，发出请求
+				var iframe="<iframe height='100%' width='100%' onscroll='true' src='<%=request.getContextPath()%>" + url + "' style='border: 0px; min-height: 531px;'></iframe>";
+				$("#myFrame").html(iframe);
+			}
+			
+			
+			function openModal(title, url, width, height) {
+				$("#myModalLabel").html(title);
+				var iframe='<iframe width="' + width +'" height="' + height + '" onscroll="true" style="border: 0px;" src="'+ url +'"></iframe>';
+				$("#myModalBody").html(iframe);
+				$("#myModal").modal("show");
+			}
+			
+			function closeModal(){
+				$("#myModal").modal("hide");
+			}
+		</script>
 	</head>
 	<body>
 		<div class="container">
-			<div class="row">
-				<div class="span2">
-					<div class="main-left-col">
-						<h1><i class="icon-shopping-cart icon-large"></i> Adminize</h1>
-							<ul class="side-nav">
-
-				<li class="active">
-					<a href="index.html"><i class="icon-home"></i> Dashboard</a>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="collapse" data-target="#website-dropdown" href="#"><i class="icon-sitemap"></i> Website <b class="caret"></b></a>
-					<ul id="website-dropdown" class="collapse">
-						<li><a href="listing.html">Pages</a></li>
-						<li><a href="listing.html">Menus</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="collapse" data-target="#store-dropdown" href="#"><i class="icon-shopping-cart"></i> Store <b class="caret"></b></a>
-					<ul id="store-dropdown" class="collapse">
-						<li><a href="listing.html">Catalogue</a></li>
-						<li><a href="orders.html">Orders</a></li>
-						<li><a href="listing.html">Enquiries</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="collapse" data-target="#reports-dropdown" href="#"><i class="icon-signal"></i> Reports <b class="caret"></b></a>
-					<ul id="reports-dropdown" class="collapse">
-						<li><a href="report.html">Sales Reports</a></li>
-						<li><a href="report.html">Product Popularity</a></li>
-						<li><a href="report.html">Member Registrations</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="collapse" data-target="#members-dropdown" href="#"><i class="icon-group"></i> Members <b class="caret"></b></a>
-					<ul id="members-dropdown" class="collapse">
-						<li><a href="listing.html">Members</a></li>
-						<li><a href="listing.html">User Groups</a></li>
-						<li><a href="listing.html">Permissions</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="collapse" data-target="#settings-dropdown" href="#"><i class="icon-cogs"></i> Settings <b class="caret"></b></a>
-					<ul id="settings-dropdown" class="collapse">
-						<li><a href="listing.html">Payment Processors</a></li>
-						<li><a href="listing.html">Order Statuses</a></li>
-						<li><a href="listing.html">Shipping Methods</a></li>
-						<li><a href="listing.html">Emails</a></li>
-					</ul>
-				</li>
-				<li><a href="#"><i class="icon-bullhorn"></i> Alerts <span class="badge badge-warning">2</span></a></li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="collapse" data-target="#help-dropdown" href="#"><i class="icon-info-sign"></i> Help <b class="caret"></b></a>
-					<ul id="help-dropdown" class="collapse">
-						<li><a href="content.html">FAQ</a></li>
-						<li class="active"><a href="content.html">User Guide</a></li>
-						<li><a href="content.html">Support</a></li>
-					</ul>
-				</li>
-			</ul>
 		
-		</div> <!-- end main-left-col -->
-	
-	</div> <!-- end span2 -->
-	
-	<div class="span10">
+		<div class="row">
 		
-	<div class="secondary-masthead">
-	
-		<ul class="nav nav-pills pull-right">
-			<li>
-				<a href="#"><i class="icon-globe"></i> View Website</a>
-			</li>
-			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> John Smith <b class="caret"></b>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a href="profile.html">Your Profile</a></li>
-					<li class="active"><a href="form.html">Account Settings</a></li>
-					<li class="divider"></li>
-					<li><a href="">Logout</a></li>
+			<div class="span2">
+		
+			<div class="main-left-col">
+		
+				<h1><i class="icon-shopping-cart icon-large"></i> ${user.username}</h1>
+			
+				<ul class="side-nav">
+					<c:forEach var="menu" items="${menuList}">
+					<li class="dropdown">
+						<i class="panel panel-default"/>
+							<i class="panel-heading"/>
+						<a data-toggle="collapse" data-parent="#accordion" 
+				   			href="#kk${menu.menuId }">
+						<span>${menu.text}</span>
+						</a>
+						<ul id="kk${menu.menuId }" class="panel-collapse collapse in">
+							<c:forEach var="second" items="${menu.childMenuList}">
+								<li>
+									<a href="javascript:openFrame('${second.url}')">
+										${second.text}
+									</a>
+								</li>
+							</c:forEach>
+						</ul>
+						
+					</li>
+					</c:forEach>
 				</ul>
-			</li>
-		</ul>
-
-		<ul class="breadcrumb">
-			<li>
-				<a href="#">Admin</a> <span class="divider">/</span>
-			</li>
-			<li class="active">Dashboard</li>
-		</ul>
 		
-	</div>
+			</div> 
+		</div> 
 	
-	<div class="main-area dashboard">
-
-		<div class="row">
+		<div class="span10">
 		
-			<div class="span10">
-			
-				<div class="slate clearfix">
-				
-					<a class="stat-column" href="#">
-						
-						<span class="number">16</span>
-						<span>Open Orders</span>
-						
-					</a>
-				
-					<a class="stat-column" href="#">
-						
-						<span class="number">452</span>
-						<span>Members</span>
-						
-					</a>
-				
-					<a class="stat-column" href="#">
-						
-						<span class="number">$2,512</span>
-						<span>Revenue</span>
-						
-					</a>
-				
-					<a class="stat-column" href="#">
-						
-						<span class="number">348</span>
-						<span>Subscribers</span>
-						
-					</a>
-				
-				</div>
-			
-			</div>
-		
-		</div>
-		
-		<div class="row">
-		
-			<div class="span5">
-			
-				<div class="slate">
-				
-					<div class="page-header">
-						<h2><i class="icon-signal pull-right"></i>Stats</h2>
-					</div>
-					<div id="placeholder" style="height: 297px;"></div>
-				
-				</div>
-			
-			</div>
-		
-			<div class="span5">
-			
-				<div class="slate">
-				
-					<div class="page-header">
-						<h2><i class="icon-shopping-cart pull-right"></i>Latest Orders</h2>
-					</div>
-					
-					<table class="orders-table table">
-					<tbody>
-						<tr>
-							<td><a href="">#12345 - Joe Bloggs</a> <span class="label label-info">Paid</span></td>
-							<td>$112.00</td>
-						</tr>
-						<tr>
-							<td><a href="">#12345 - Joe Bloggs</a> <span class="label label-success">Dispatched</span></td>
-							<td>$112.00</td>
-						</tr>
-						<tr>
-							<td><a href="">#12345 - Joe Bloggs</a> <span class="label label-important">Refunded</span></td>
-							<td>$112.00</td>
-						</tr>
-						<tr>
-							<td><a href="">#12345 - Joe Bloggs</a> <span class="label">Awaiting Payment</span></td>
-							<td>$112.00</td>
-						</tr>
-						<tr>
-							<td><a href="">#12345 - Joe Bloggs</a> <span class="label label-inverse">Failed</span></td>
-							<td>$112.00</td>
-						</tr>
-						<tr>
-							<td><a href="">#12345 - Joe Bloggs</a> <span class="label label-warning">Cancelled</span></td>
-							<td>$112.00</td>
-						</tr>
-						<tr>
-							<td><a href="">#12345 - Joe Bloggs</a> <span class="label label-info">Paid</span></td>
-							<td>$112.00</td>
-						</tr>
-						<tr>
-							<td colspan="2"><a href="">View more orders</a></td>
-						</tr>
-					</tbody>
-					</table>
-
-				</div>
-			
-			</div>
-		
-		</div>
-		
-		<div class="row">
-		
-			<div class="span5">
-			
-				<div class="slate">
-				
-					<div class="page-header">
-						<h2><a class="pull-right iconlink" href=""><i class="icon-rss"></i></a>News</h2>
-					</div>
-				
-					<table class="orders-table table">
-					<tbody>
-						<tr>
-							<td><a href="">News article title</a></td>
-							<td class="date">Today at 12:01</td>
-						</tr>
-						<tr>
-							<td><a href="">Another news article title</a></td>
-							<td class="date">Yesterday at 16:34</td>
-						</tr>
-						<tr>
-							<td><a href="">A third news article title</a></td>
-							<td class="date">22nd June 2014</td>
-						</tr>
-						<tr>
-							<td><a href="">This news article title spans onto two lines so we can see what it will look like</a></td>
-							<td class="date">21st June 2014</td>
-						</tr>
-						<tr>
-							<td><a href="">A final news article title</a></td>
-							<td class="date">20th June 2014</td>
-						</tr>
-						<tr>
-							<td colspan="2"><a href="">Read more news</a></td>
-						</tr>
-					</tbody>
-					</table>
-
-				</div>
-			
-			</div>
-		
-			<div class="span5">
-			
-				<div class="slate">
-				
-					<div class="page-header">
-						<h2><i class="icon-envelope-alt pull-right"></i>Enquiries</h2>
-					</div>
-				
-					<table class="orders-table table">
-					<tbody>
-						<tr>
-							<td><a href="">Customer enquiry</a> <span class="label label-info">New</span></td>
-							<td class="date">Today at 12:01</td>
-						</tr>
-						<tr>
-							<td><a href="">Another customer enquiry</a> <span class="label label-info">New</span></td>
-							<td class="date">Yesterday at 16:34</td>
-						</tr>
-						<tr>
-							<td><a href="">A third customer enquiry</a></td>
-							<td class="date">22nd June 2014</td>
-						</tr>
-						<tr>
-							<td><a href="">This customer enquiry spans onto two lines so we can see what it will look like</a></td>
-							<td class="date">21st June 2014</td>
-						</tr>
-						<tr>
-							<td><a href="">A final customer enquiry</a></td>
-							<td class="date">20th June 2014</td>
-						</tr>
-						<tr>
-							<td colspan="2"><a href="">View more enquiries</a></td>
-						</tr>
-					</tbody>
-					</table>
-
-				</div>
-			
-			</div>
-		
-		</div>
-		
-		<div class="row">
-		
-			<div class="span10 footer">
-			
-				<p>&copy; Website Name 2014</p>
-			
-			</div>
-		
-		</div>
-		
-	</div>
 	
-	</div> <!-- end span10 -->
+		<div class="main-area dashboard">
+
+			<div class="row">
 		
-	</div> <!-- end row -->
+				<div class="span10">
+					<div id="myFrame">
+				
+					</div>
+				</div>
+			</div>
+	
+		</div>
+	
+		</div> <!-- end span10 -->
 		
-</div> <!-- end container -->
+		</div> <!-- end row -->
+		
+	</div> <!-- end container -->
+
+
+
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    	<div class="modal-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                	<h4 class="modal-title" id="myModalLabel"></h4>
+            	</div>
+            	<div class="modal-body" id="myModalBody"></div>
+          
+        	</div>
+    	</div>
+	</div>
+
+
 	</body>
 </html>
