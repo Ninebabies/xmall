@@ -24,7 +24,11 @@ public class MenuServiceImpl implements MenuService{
 	
 	public List<Menu> getMenuListByRole(Role role) throws Exception {
 //		根据角色获取所有的一级菜单,一级菜单没有父级null
-		List<Menu> menuList=menuDao.findMenuListByRole(role.getRoleId());
+		List<Menu> menuList=menuDao.findFristMenuListByRole(role.getRoleId());
+		System.out.println("-------------------------------");
+		for (Menu menu : menuList) {
+			System.out.println("--------------"+menu.getText());
+		}
 //		将获得的一级菜单列表进行循环，获得每个人以及菜单的二级菜单集合
 		if(menuList != null && menuList.size() > 0) {
 			for (Menu frist : menuList) {

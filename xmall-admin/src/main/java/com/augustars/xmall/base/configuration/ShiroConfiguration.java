@@ -43,7 +43,7 @@ public class ShiroConfiguration {
 		shiroFilter.setLoginUrl("/user/userLogin");
 		// 配置当认证成功后，默认的重定向的跳转地址
 		// 若在认证之前，就已经存在要跳转的地址，则shiro框架会自动向该地址进行重定向
-		shiroFilter.setSuccessUrl("/index");
+//		shiroFilter.setSuccessUrl("/index");
 		//拦截器
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 			//静态资源无需认证anon

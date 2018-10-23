@@ -12,7 +12,7 @@ import com.augustars.xmall.base.controller.BaseController;
 import com.augustars.xmall.entity.vo.Node;
 import com.augustars.xmall.transport.MenuTransport;
 
-@Controller
+@Controller("menuController")
 @RequestMapping("/menu")
 public class MenuController extends BaseController{
 	@Reference(version="1.0.0")

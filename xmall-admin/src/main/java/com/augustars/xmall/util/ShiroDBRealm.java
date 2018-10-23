@@ -60,8 +60,7 @@ public class ShiroDBRealm extends AuthorizingRealm {
 			User user = userTransport.getUserByLoginName(loginName);
 			// 判断是否启用
 			if (user != null && ConstantUtil.STATUS_YES.equals(user.getStatus().getStatusCode())) {
-				SimpleAuthenticationInfo info = 
-						new SimpleAuthenticationInfo(
+				SimpleAuthenticationInfo info =new SimpleAuthenticationInfo(
 								user.getLoginName(), user.getPassword(), getName());
 				SecurityUtils.getSubject().getSession().setAttribute("user", user);
 				return info;

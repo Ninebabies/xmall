@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.dubbo.config.annotation.Reference;
@@ -38,10 +39,11 @@ public class RoleController extends BaseController {
 	}
 	@RequestMapping(value="/authcList", method=RequestMethod.GET)
 	public ModelAndView getAuthcList(Long roleId) throws Exception{
-		return null;
+		return new ModelAndView("role/authc_list","roleId",roleId);
 	}
 	
 	@RequestMapping(value="/authc", method=RequestMethod.GET)
+	@ResponseBody
 	public boolean authc(Long roleId, String nodeIds) throws Exception{
 		//截取所有的权限
 		String[] ids= nodeIds.split("-");

@@ -24,6 +24,7 @@ public class IndexController extends BaseController{
 	//主要处理SpringMVC配置文件的"/"请求问题
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public ModelAndView getIndex() throws Exception{
+		System.out.println("跳转首页...................");
 //		实现过程：通过用户--》角色--》菜单列表
 //		第一步：获取当前的登陆用户
 //		User user =(User) session.getAttribute("user");
@@ -36,14 +37,14 @@ public class IndexController extends BaseController{
 		List<Menu> menuList=menuTransport.getMenuListByRole(role);
 		for (Menu menu : menuList) {
 			List<Menu> chlidemenuList = menu.getChildMenuList();
-			System.out.println(menu.getText());
+			System.out.println(menu.getText()+"....................");
 			for (Menu menu2 : chlidemenuList) {
-				System.out.println(menu2.getText());
+				System.out.println(menu2.getText()+"0000000000000000");
 			}
 		}
 //		转发到管理员管理界面
 		Map<String, Object> resultMap= new HashMap<String,Object>(); 
-//		resultMap.put("menuList", menuList);
+		resultMap.put("menuList", menuList);
 //		List<Menu> menuList1 = menuTransport.getMenuListByRole(role);
 		System.out.println("resultMap");
 //		return new ModelAndView("index","menuList", menuList);

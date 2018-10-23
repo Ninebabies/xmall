@@ -37,7 +37,7 @@ public class UserController extends BaseController {
 	public ModelAndView loginError() throws Exception {
 		System.out.println("认证失败！");
 //		String url=request.getContextPath()+"user/userLogin";
-		RedirectView view = new RedirectView(request.getContextPath() + "/user/logout");
+		RedirectView view = new RedirectView(request.getContextPath() + "/user/login");
 		return new ModelAndView(view);
 	}
 	@RequestMapping(value="/list/{pageNum}/{username}")

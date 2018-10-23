@@ -29,6 +29,8 @@ public class UserServiceImpl implements UserSerivce {
 	private UserDao userDao;
 	@Resource(name="statusDao")
 	private StatusDao statusDao;
+	
+	
 	public User getUserByLoginName(String loginName) throws Exception {
 		return userDao.findUserByLoginName(loginName);
 	}   

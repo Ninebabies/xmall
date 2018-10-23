@@ -19,11 +19,10 @@ import javax.persistence.Table;
 @Table(name="sys_role")
 public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private Long roleId;//	角色主键
-	private String roleName;//	角色名称
-	private Status status;// 状态
-	private List<Menu> menuList;//	菜单集合
-	
+	private Long roleId;
+	private String roleName;
+	private Status status;
+	private List<Menu> menuList;	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="role_id")
@@ -39,7 +38,6 @@ public class Role implements Serializable {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-	
 	@ManyToOne(targetEntity=Status.class, fetch=FetchType.EAGER,
 			cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="status_id")	
@@ -60,4 +58,6 @@ public class Role implements Serializable {
 	public void setMenuList(List<Menu> menuList) {
 		this.menuList = menuList;
 	}
+	
+
 }
