@@ -27,7 +27,6 @@ public class Menu implements Serializable{
 	private Menu parent;				// 上级菜单
 	private String text;				// 菜单名称
 	private String url;					// 链接地址
-	private String icon;				// 图标样式
 	private Integer sortOrder;			// 排序
 	private Status status;				// 状态
 	private User createUser;			// 创建人
@@ -67,12 +66,7 @@ public class Menu implements Serializable{
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public String getIcon() {
-		return icon;
-	}
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
+	
 	public Integer getSortOrder() {
 		return sortOrder;
 	}
@@ -80,7 +74,7 @@ public class Menu implements Serializable{
 		this.sortOrder = sortOrder;
 	}
 	
-	@ManyToOne(targetEntity=Status.class, fetch=FetchType.LAZY,
+	@ManyToOne(targetEntity=Status.class, fetch=FetchType.EAGER,
 			cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="status_id")
 	public Status getStatus() {

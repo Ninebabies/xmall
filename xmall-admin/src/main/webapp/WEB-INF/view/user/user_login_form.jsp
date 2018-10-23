@@ -26,7 +26,7 @@
 	<body>
 		 <div class="page-container">
             <h1>Xamll后台登录系统</h1>
-            <form  action="" method="post">
+            <form  action="/user/userLogin" method="post">
                 <input type="text" name="username" class="username" placeholder="用户名">
                 <input type="password" name="password" class="password" placeholder="密码">
                 <button type="submit">登录</button>

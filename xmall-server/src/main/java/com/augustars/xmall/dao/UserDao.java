@@ -7,6 +7,7 @@ import com.augustars.xmall.dao.Base.BaseDao;
 import com.augustars.xmall.entity.User;
 
 public interface UserDao extends BaseDao<User, Long> {
+	
 	@Query("from User u where u.loginName=:loginName")
 	public User findUserByLoginName(@Param("loginName")String loginName) throws Exception;
 

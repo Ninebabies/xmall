@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -55,6 +56,7 @@ public class User implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	@Column(name="login_name")
 	public String getLoginName() {
 		return loginName;
 	}

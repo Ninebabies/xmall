@@ -33,7 +33,7 @@ public class UserController extends BaseController {
 		return "user/user_login_form";
 	}
 	
-	@RequestMapping(value="/login", method=RequestMethod.POST)
+	@RequestMapping(value="/userLogin", method=RequestMethod.POST)
 	public ModelAndView loginError() throws Exception {
 		System.out.println("认证失败！");
 //		String url=request.getContextPath()+"user/userLogin";
